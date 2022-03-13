@@ -1,0 +1,225 @@
+@prefix : <http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology> .
+
+<http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#admits
+:admits rdf:type owl:ObjectProperty ;
+        rdfs:domain :School ;
+        rdfs:range :Student ;
+        rdfs:comment "School ADMITS Students"@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#employs
+:employs rdf:type owl:ObjectProperty ;
+         rdfs:domain :School ;
+         rdfs:range :Teacher ;
+         rdfs:comment "School EMPLOYS Staff"@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#learns
+:learns rdf:type owl:ObjectProperty ;
+        rdfs:domain :Student ;
+        rdfs:range :Subject ;
+        rdfs:comment "Student LEARNS Subject"@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#sameAs
+:sameAs rdf:type owl:ObjectProperty ;
+        rdfs:domain :Student ;
+        rdfs:range :Student .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#teaches
+:teaches rdf:type owl:ObjectProperty ;
+         rdfs:domain :Teacher ;
+         rdfs:range :Student ;
+         rdfs:comment "Teacher TEACHES Student"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#credit
+:credit rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Student ;
+        rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#joinedON
+:joinedON rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Student ;
+          rdfs:range xsd:dateTime ;
+          rdfs:comment "Indicates Joining Date of the Student"@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#joiningDate
+:joiningDate rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Teacher ;
+             rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#staffID
+:staffID rdf:type owl:DatatypeProperty ;
+         rdfs:domain <http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Staff> ;
+         rdfs:range xsd:string ;
+         rdfs:comment "Indicates Staff's ID"@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#studentID
+:studentID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Student ;
+           rdfs:range xsd:string ;
+           rdfs:comment "Indicates Student's ID"@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#teach
+:teach rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Teacher ;
+       rdfs:range xsd:string ;
+       rdfs:comment "Indicactes which Subject the Teacher teaches." .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Administrative
+:Administrative rdf:type owl:Class ;
+                owl:equivalentClass :Maintenence ;
+                rdfs:subClassOf :nonTeaching .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Government
+:Government rdf:type owl:Class ;
+            rdfs:subClassOf :School .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Maintenence
+:Maintenence rdf:type owl:Class ;
+             rdfs:subClassOf :nonTeaching .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#School
+:School rdf:type owl:Class ;
+        rdfs:comment "This is school class."@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Student
+:Student rdf:type owl:Class ;
+         owl:disjointWith <http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Staff> ;
+         rdfs:comment "This is Student Class."@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Subject
+:Subject rdf:type owl:Class ;
+         rdfs:comment "This is Subject Class."@en .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Supporting
+:Supporting rdf:type owl:Class ;
+            rdfs:subClassOf :nonTeaching .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Teacher
+:Teacher rdf:type owl:Class ;
+         rdfs:subClassOf <http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Staff> .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#houseKeeping
+:houseKeeping rdf:type owl:Class ;
+              rdfs:subClassOf :nonTeaching .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#juniorStudent
+:juniorStudent rdf:type owl:Class ;
+               rdfs:subClassOf :Student .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#nonTeaching
+:nonTeaching rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Staff> .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#seniorStudent
+:seniorStudent rdf:type owl:Class ;
+               rdfs:subClassOf :Student .
+
+
+###  http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Private
+<http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Private> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf :School .
+
+
+###  http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Staff
+<http://www.zf.org/z0148190/ontologies/2022/1/practice_school_ontology#Staff> rdf:type owl:Class ;
+                                                                              rdfs:comment "This is Staff Class."@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Chris
+:Chris rdf:type owl:NamedIndividual ,
+                :Student ;
+       owl:sameAs :Tony ;
+       :learns :Physics ;
+       :credit "1400"^^xsd:int ;
+       :joinedON "2022-02-01T10:00:00"^^xsd:dateTime ;
+       :studentID "S102"^^xsd:string .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#National_School
+:National_School rdf:type owl:NamedIndividual ,
+                          :School ;
+                 :admits :Chris ,
+                         :Tony ;
+                 :employs :Nick .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Nick
+:Nick rdf:type owl:NamedIndividual ,
+               :Teacher ;
+      :teaches :Tony ;
+      :joiningDate "2020-01-01T08:00:00"^^xsd:dateTime ;
+      :teach "science"^^xsd:string .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Physics
+:Physics rdf:type owl:NamedIndividual ,
+                  :Subject .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Science
+:Science rdf:type owl:NamedIndividual ,
+                  :Subject .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Thor
+:Thor rdf:type owl:NamedIndividual ,
+               :Student ;
+      :admits :Thor .
+
+
+###  http://www.semanticweb.org/z0148190/ontologies/2022/1/practice_school_ontology#Tony
+:Tony rdf:type owl:NamedIndividual ,
+               :Student ;
+      :learns :Science ;
+      :sameAs :Chris ;
+      :credit "1200"^^xsd:int ;
+      :joinedON "2022-01-01T09:00:00"^^xsd:dateTime ;
+      :studentID "S101"^^xsd:string .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
